@@ -2,7 +2,6 @@ H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\VKK.csprojAssemblyReference.cache
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\App.g.cs
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\VKK_Content.g.cs
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\VKK_MarkupCompile.cache
-H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\VKK_MarkupCompile.lref
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\bin\Debug\VKK.exe.config
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\bin\Debug\VKK.exe
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\bin\Debug\VKK.pdb
@@ -16,11 +15,6 @@ H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\VKK.exe
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\VKK.pdb
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\BrowsePage.g.cs
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\WelcomePage.g.cs
-H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\BrowsePage.baml
-H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\WelcomePage.baml
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\NewRecipePage.g.cs
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\SearchResultsPage.g.cs
-H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\NewRecipePage.baml
-H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\SearchResultsPage.baml
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\RecipeViewPage.g.cs
-H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\GUI\RecipeViewPage.baml
