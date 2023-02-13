@@ -8,10 +8,10 @@ namespace VKK
     {
         public int ID;
         public string Title;
-        public string Color;
 
         public Category()
         {
         }
+
     }
 }

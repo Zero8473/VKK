@@ -59,55 +59,55 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="GUI\Browse.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="GUI\BrowsePage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\RecipeView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="GUI\NewRecipePage.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="GUI\SearchResults.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="GUI\Welcome.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Category.cs" />
+    <Compile Include="Classes\Controller.cs" />
     <Compile Include="Classes\DBAdapter.cs" />
     <Compile Include="Classes\Ingredient.cs" />
     <Compile Include="Classes\MySqlConnector.cs" />
     <Compile Include="Classes\Recipe.cs" />
     <Compile Include="Classes\Step.cs" />
     <Compile Include="Classes\Unit.cs" />
-    <Compile Include="GUI\Browse.xaml.cs">
-      <DependentUpon>Browse.xaml</DependentUpon>
+    <Compile Include="GUI\BrowsePage.xaml.cs">
+      <DependentUpon>BrowsePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\RecipeView.xaml.cs">
-      <DependentUpon>RecipeView.xaml</DependentUpon>
+    <Compile Include="GUI\NewRecipePage.xaml.cs">
+      <DependentUpon>NewRecipePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\SearchResults.xaml.cs">
-      <DependentUpon>SearchResults.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Welcome.xaml.cs">
-      <DependentUpon>Welcome.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="GUI\RecipeViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\SearchResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\RecipeViewPage.xaml.cs">
+      <DependentUpon>RecipeViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SearchResultsPage.xaml.cs">
+      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -135,11 +135,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="GUI\default.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Database\2023-11-01 kochrezepte.sql" />
     <Resource Include="Images\default.jpg" />
+    <Resource Include="GUI\default.jpg" />
     <Content Include="Libraries\MySql.Data.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

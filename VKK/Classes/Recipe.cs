@@ -27,7 +27,7 @@ namespace VKK
             set { _pic = value; }
         }
 
-        public Category category;
+        public Category Category;
 
         public List<Ingredient> Ingredients = new List<Ingredient>();
 

@@ -14,7 +14,7 @@ namespace VKK
 
         public bool InsertCategorie(Category cat)
         {
-            string mySqlInsert = String.Format("INSERT INTO category (title, color) VALUES ('{1}', '{2}'); ", cat.Title, cat.Color);
+            string mySqlInsert = String.Format("INSERT INTO category (title) VALUES ('{1}', '{2}'); ", cat.Title);
             int catid = unchecked((int)mySqlConnector.executeInsert(mySqlInsert));
 
             if(catid == -1)
@@ -29,7 +29,7 @@ namespace VKK
 
         public bool InsertRecipe(Recipe rec)
         {
-            string mySqlInsert = String.Format("INSERT INTO recipe (title, pic, servings, time, category) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}'); ", rec.Title, rec.Pic, rec.Servings, rec.TimeInMinutes, rec.category.ID);
+            string mySqlInsert = String.Format("INSERT INTO recipe (title, pic, servings, time, category) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}'); ", rec.Title, rec.Pic, rec.Servings, rec.TimeInMinutes, rec.Category.ID);
             int recid = unchecked((int)mySqlConnector.executeInsert(mySqlInsert));
 
             if(recid == -1)
@@ -74,7 +74,7 @@ namespace VKK
         {
             List<Category> cats = new List<Category>();
 
-            string mySqlQueryCat = "SELECT id, title, color FROM category; ";
+            string mySqlQueryCat = "SELECT id, title FROM category; ";
             MySqlDataReader CatReader = mySqlConnector.ExecuteQuery(mySqlQueryCat);
 
             while (CatReader.Read())
@@ -83,7 +83,6 @@ namespace VKK
 
                 cat.ID = CatReader.GetInt32("id");
                 cat.Title = CatReader.GetString("title");
-                cat.Color = CatReader.GetString("color");
 
                 cats.Add(cat);
             }
@@ -163,7 +162,7 @@ namespace VKK
             {
                 if (cat.ID == RecReader.GetInt32("category"))
                 {
-                    rec.category = cat;
+                    rec.Category = cat;
                 }
             }
         }
@@ -190,22 +189,22 @@ namespace VKK
             return mySqlConnector.executeNonQuery(mySqlDelete);
         }
 
-        public int UpdateRecipe(Recipe rec)
-        {
-            string mySqlUpdate = String.Format("UPDATE recipe SET title='{0}', pic='{1}', servings='{2}', time='{3}', category='{4}' WHERE id='{5}'; ", rec.Title, rec.Pic, rec.Servings, rec.TimeInMinutes, rec.category, rec.ID);
-            return mySqlConnector.executeNonQuery(mySqlUpdate);
-        }
+        //public int UpdateRecipe(Recipe rec)
+        //{
+        //    string mySqlUpdate = String.Format("UPDATE recipe SET title='{0}', pic='{1}', servings='{2}', time='{3}', category='{4}' WHERE id='{5}'; ", rec.Title, rec.Pic, rec.Servings, rec.TimeInMinutes, rec.category, rec.ID);
+        //    return mySqlConnector.executeNonQuery(mySqlUpdate);
+        //}
 
-        public int UpdateStep(Step step)
-        {
-            string mySqlUpdate = String.Format("UPDATE step SET description='{0}' WHERE recid='{1}' AND no='{2}'; ", step.Description, step.Rec.ID, step.No);
-            return mySqlConnector.executeNonQuery(mySqlUpdate);
-        }
+        //public int UpdateStep(Step step)
+        //{
+        //    string mySqlUpdate = String.Format("UPDATE step SET description='{0}' WHERE recid='{1}' AND no='{2}'; ", step.Description, step.Rec.ID, step.No);
+        //    return mySqlConnector.executeNonQuery(mySqlUpdate);
+        //}
 
-        public int UpdateIngredient(Ingredient ing)
-        {
-            string mySqlUpdate = String.Format("UPDATE ingredient SET amount='{0}', unit='{1}' WHERE recid='{2}' and title='{3}'; ", ing.Amount, ing.UnitOfMeasure.ToString(), ing.Rec.ID, ing.Title);
-            return mySqlConnector.executeNonQuery(mySqlUpdate);
-        }
+        //public int UpdateIngredient(Ingredient ing)
+        //{
+        //    string mySqlUpdate = String.Format("UPDATE ingredient SET amount='{0}', unit='{1}' WHERE recid='{2}' and title='{3}'; ", ing.Amount, ing.UnitOfMeasure.ToString(), ing.Rec.ID, ing.Title);
+        //    return mySqlConnector.executeNonQuery(mySqlUpdate);
+        //}
     }
 }
