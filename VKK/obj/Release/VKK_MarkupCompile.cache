@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Debug\
+H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\obj\Release\
 VKK
 none
 false
-DEBUG;TRACE
+TRACE
 H:\Fächer\SAE\3. Lehrjahr\VKK\VKK\App.xaml
 5-743862660
 2-1002455387
-18-2092823692
+17-1250464325
 14316075597
 GUI\BrowsePage.xaml;GUI\NewRecipePage.xaml;GUI\RecipeViewPage.xaml;GUI\SearchResultsPage.xaml;GUI\WelcomePage.xaml;
 
-False
+True
 
