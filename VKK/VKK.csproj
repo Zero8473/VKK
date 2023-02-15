@@ -89,10 +89,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\SearchResultsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GUI\WelcomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,9 +97,6 @@
   <ItemGroup>
     <Compile Include="GUI\RecipeViewPage.xaml.cs">
       <DependentUpon>RecipeViewPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\SearchResultsPage.xaml.cs">
-      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
