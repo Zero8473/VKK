@@ -22,6 +22,8 @@ namespace VKK
                 results.Add(catstring);
             }
 
+            results.Add("");
+
             return results;
         }
 
@@ -42,32 +44,14 @@ namespace VKK
 
             foreach (Recipe rec in recs)
             {
-                string curr = GetRecipeString(rec);
+                string curr = rec.Title;
                 recEntries.Add(curr);
             }
 
             return recEntries;
         }
 
-        public List<string> GetRecipesPerSearch(string search)
-        {
-            List<Recipe> recs = db.GetRecipes();
-            List<string> recEntries = new List<string>();
-
-            foreach (Recipe rec in recs)
-            {
-                if (rec.Title.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
-                {
-                    string curr = GetRecipeString(rec);
-                    recEntries.Add(curr);
-                }
-            }
-
-            recEntries.Sort();
-            return recEntries;
-        }
-
-        public List<string> GetRecipesPerSearchAndCategory(string search, string category)
+        public List<string> GetRecipesPerSearch(string search, string category)
         {
             List<Recipe> recs = db.GetRecipes();
             List<string> recEntries = new List<string>();
@@ -78,7 +62,7 @@ namespace VKK
                 {
                     if (rec.Title.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0 && rec.Category.Title == category)
                     {
-                        string curr = GetRecipeString(rec);
+                        string curr = rec.Title;
                         recEntries.Add(curr);
                     }
                 }
@@ -86,7 +70,7 @@ namespace VKK
                 {
                     if (rec.Title.Contains(search))
                     {
-                        string curr = GetRecipeString(rec);
+                        string curr = rec.Title;
                         recEntries.Add(curr);
                     }
                 }
@@ -94,11 +78,6 @@ namespace VKK
 
             recEntries.Sort();
             return recEntries;
-        }
-
-        private string GetRecipeString(Recipe rec)
-        {
-            return String.Format("{0}, Arbeitszeit: {1} min, Kategorie: {2}", rec.Title, rec.TimeInMinutes, rec.Category.Title);
         }
 
         public int DeleteRecipe(Recipe rec)
