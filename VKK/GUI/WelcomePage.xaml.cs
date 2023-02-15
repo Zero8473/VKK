@@ -37,12 +37,5 @@ namespace VKK.GUI
             NewRecipePage page = new NewRecipePage();
             this.NavigationService.Navigate(page);
         }
-
-        private void Btn_Go_Click(object sender, RoutedEventArgs e)
-        {
-            SearchResultsPage page = new SearchResultsPage();
-            page.Txt_Search2.Text = Txt_Search.Text;
-            this.NavigationService.Navigate(page);
-        }
     }
 }

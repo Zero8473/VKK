@@ -10,10 +10,8 @@
       WindowHeight="500">
 
     <Grid Background="White" Height="450" Width="800">
-        <TextBox x:Name="Txt_Search" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="472,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" Height="29" FontSize="14" FontFamily="Century Gothic"/>
         <Label x:Name="Lbl_Welcome" Content="Willkommen" HorizontalAlignment="Left" Margin="28,19,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Normal" FontFamily="Century Gothic"/>
         <Button x:Name="Btn_New" Content="Neu" HorizontalAlignment="Left" Margin="296,265,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="24" Height="79" Width="214" Click="Btn_New_Click"/>
         <Button x:Name="Btn_Browse" Content="Stöbern" HorizontalAlignment="Left" Margin="297,138,0,0" VerticalAlignment="Top" Height="79" Width="212" FontSize="24" FontFamily="Century Gothic" Click="Btn_Browse_Click"/>
-        <Button x:Name="Btn_Go" Content="Suche" HorizontalAlignment="Left" Margin="721,32,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="14" Height="29" Width="58" Click="Btn_Go_Click"/>
     </Grid>
 </Page>
