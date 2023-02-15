@@ -42,6 +42,7 @@ namespace VKK.GUI
             Ingredient ing = new Ingredient();
             ing.Title = Txt_Ingredient.Text;
             Decimal.TryParse(Txt_Amount.Text, out ing.Amount);
+            Enum.TryParse<Unit>(CB_Units.Text, out ing.UnitOfMeasure);
 
             Txt_Ingredient.Text = "";
             Txt_Amount.Text = "";
@@ -98,7 +99,8 @@ namespace VKK.GUI
             Txt_RecipeServings.Text = "";
             Txt_Time.Text = "";
 
-            BrowsePage page = new BrowsePage();
+            WelcomePage page = new WelcomePage();
+            this.NavigationService.RemoveBackEntry();
             this.NavigationService.Navigate(page);
         }
     }

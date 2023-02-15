@@ -12,7 +12,7 @@
     <Grid Background="White" Width="800" Height="450">
         <Label x:Name="Lbl_NewRecipe" Content="Neues Rezept" HorizontalAlignment="Left" Margin="28,19,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Normal" FontFamily="Century Gothic"/>
         <Label x:Name="Lbl_Name" Content="Name:" HorizontalAlignment="Left" Margin="28,135,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="20" Height="35"/>
-        <Label x:Name="Lbl_Pic" Content="Bild:" HorizontalAlignment="Left" Margin="28,220,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="20"/>
+        <Label x:Name="Lbl_Pic" Content="Bild:" HorizontalAlignment="Left" Margin="28,220,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="20" ToolTip="Pfad des Bildes, ohne &quot;&quot;"/>
         <TextBox x:Name="Txt_RecipeName" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="35" Margin="140,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" FontFamily="Century Gothic" FontSize="16" MaxLines="1"/>
         <TextBox x:Name="Txt_RecipePic" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="35" Margin="140,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" FontFamily="Century Gothic" FontSize="16"/>
         <Label x:Name="Lbl_Servings" Content="Portionen:" HorizontalAlignment="Left" Margin="28,295,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="20"/>
