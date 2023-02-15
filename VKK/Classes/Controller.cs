@@ -40,7 +40,7 @@ namespace VKK
             List<Recipe> recs = db.GetRecipes();
             List<string> recEntries = new List<string>();
 
-            foreach(Recipe rec in recs)
+            foreach (Recipe rec in recs)
             {
                 string curr = GetRecipeString(rec);
                 recEntries.Add(curr);
@@ -54,15 +54,16 @@ namespace VKK
             List<Recipe> recs = db.GetRecipes();
             List<string> recEntries = new List<string>();
 
-            foreach(Recipe rec in recs)
+            foreach (Recipe rec in recs)
             {
-                if(rec.Title.Contains(search))
+                if (rec.Title.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     string curr = GetRecipeString(rec);
                     recEntries.Add(curr);
                 }
             }
 
+            recEntries.Sort();
             return recEntries;
         }
 
@@ -71,11 +72,11 @@ namespace VKK
             List<Recipe> recs = db.GetRecipes();
             List<string> recEntries = new List<string>();
 
-            foreach(Recipe rec in recs)
+            foreach (Recipe rec in recs)
             {
-                if(category != "")
+                if (category != "")
                 {
-                    if (rec.Title.Contains(search) && rec.Category.Title == category)
+                    if (rec.Title.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0 && rec.Category.Title == category)
                     {
                         string curr = GetRecipeString(rec);
                         recEntries.Add(curr);
@@ -91,12 +92,13 @@ namespace VKK
                 }
             }
 
+            recEntries.Sort();
             return recEntries;
         }
 
         private string GetRecipeString(Recipe rec)
         {
-            return String.Format("{0}, Arbeitszeit: {1} min, Kategorie: {2}", rec.Title, rec.TimeInMinutes, rec.Category.Title); 
+            return String.Format("{0}, Arbeitszeit: {1} min, Kategorie: {2}", rec.Title, rec.TimeInMinutes, rec.Category.Title);
         }
 
         public int DeleteRecipe(Recipe rec)

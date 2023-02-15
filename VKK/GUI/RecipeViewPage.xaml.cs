@@ -44,7 +44,7 @@ namespace VKK.GUI
 
             foreach(Ingredient ing in curr.Ingredients)
             {
-                ings += String.Format("{0} {1} {2}", ing.Amount, ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                ings += String.Format("{0} {1} {2}", ing.Amount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
             }
 
             steps = String.Format("Arbeitszeit: {0} min.", curr.TimeInMinutes.ToString()) + Environment.NewLine;
@@ -65,16 +65,29 @@ namespace VKK.GUI
 
         private void Txt_Servings_TextChanged(object sender, TextChangedEventArgs e)
         {
-        }
-
-        private void Txt_Servings_TextInput(object sender, TextCompositionEventArgs e)
-        {
             ings = "";
+            int ServingInt;
 
-            foreach (Ingredient ing in curr.Ingredients)
+            try
             {
-                decimal newAmount = ing.Amount / curr.Servings * Int32.Parse(Txt_Servings.Text);
-                ings += String.Format("{0} {1} {2}", newAmount, ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                ServingInt = Int32.Parse(Txt_Servings.Text);
+
+                if (ServingInt == curr.Servings || ServingInt == 0)
+                {
+                    return;
+                }
+
+                foreach (Ingredient ing in curr.Ingredients)
+                {
+                    decimal newAmount = ing.Amount / curr.Servings * ServingInt;
+                    ings += String.Format("{0} {1} {2}", newAmount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                }
+
+                Txt_Ingredients.Text = ings;
+            }
+            catch
+            {
+                return;
             }
         }
     }
