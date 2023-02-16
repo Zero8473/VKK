@@ -99,7 +99,7 @@ CREATE TABLE `recipe` (
 
 LOCK TABLES `recipe` WRITE;
 /*!40000 ALTER TABLE `recipe` DISABLE KEYS */;
-INSERT INTO `recipe` VALUES (1,'Honigdressing','H:\\Fächer\\SAE\\3. Lehrjahr\\VKK\\VKK\\Images\\Salatdressing.jpg',4,5,1),(9,'Spaghetti Napoli','H:\\Fächer\\SAE\\3. Lehrjahr\\VKK\\VKK\\Images\\Spaghetti.jpg',4,10,3),(10,'Schinken-Zucchini-Strudel','H:\\Fächer\\SAE\\3. Lehrjahr\\VKK\\VKK\\Images\\Schinken-Zucchini1.jpg',2,45,2),(11,'Apfelkuchen','H:\\Fächer\\SAE\\3. Lehrjahr\\VKK\\VKK\\Images\\Apfelkuchen.jpg',12,60,6),(12,'Lachs-Brokkoli-Nudeln','https://images.lecker.de/lachs-nudelpfanne-mit-brokkoli-rezept,id=90dc4fe0,b=lecker,w=610,cg=c.jpg',4,35,5),(13,'Chili sin carne','https://emmikochteinfach.de/wp-content/uploads/2023/01/Chili-sin-Carne-schnell-und-einfach-1.webp',4,30,4),(14,'Rindfleisch-Gemüse-Pfanne','https://images.aws.nestle.recipes/resized/8129cddb29bf167fd47c098682dff02c_id71528_rindfleischgemuesepfanne1500x700_375_400.jpg',2,25,7);
+INSERT INTO `recipe` VALUES (1,'Honigdressing','\\Images\\Salatdressing.jpg',4,5,1),(9,'Spaghetti Napoli','\\Images\\Spaghetti.jpg',4,10,3),(10,'Schinken-Zucchini-Strudel','\\Images\\Schinken-Zucchini1.jpg',2,45,2),(11,'Apfelkuchen','\\Images\\Apfelkuchen.jpg',12,60,6),(12,'Lachs-Brokkoli-Nudeln','https://images.lecker.de/lachs-nudelpfanne-mit-brokkoli-rezept,id=90dc4fe0,b=lecker,w=610,cg=c.jpg',4,35,5),(13,'Chili sin carne','https://emmikochteinfach.de/wp-content/uploads/2023/01/Chili-sin-Carne-schnell-und-einfach-1.webp',4,30,4),(14,'Rindfleisch-Gemüse-Pfanne','https://images.aws.nestle.recipes/resized/8129cddb29bf167fd47c098682dff02c_id71528_rindfleischgemuesepfanne1500x700_375_400.jpg',2,25,7);
 /*!40000 ALTER TABLE `recipe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,4 +139,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-16 10:31:43
+-- Dump completed on 2023-02-16 11:17:41

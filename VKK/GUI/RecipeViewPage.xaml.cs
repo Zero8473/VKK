@@ -34,7 +34,18 @@ namespace VKK.GUI
 
             try
             {
-                Img_RecipePic.Source = new ImageSourceConverter().ConvertFromString(curr.Pic) as ImageSource;
+                string imgString;
+
+                if (curr.Pic.Substring(0, 1) == @"\")
+                {
+                    imgString = "..\\.." + curr.Pic;
+                }
+                else
+                {
+                    imgString = curr.Pic;
+                }
+
+                Img_RecipePic.Source = new ImageSourceConverter().ConvertFromString(imgString) as ImageSource;
             }
 
             catch
