@@ -43,5 +43,10 @@ namespace VKK.GUI
             NewCategoryPage page = new NewCategoryPage();
             this.NavigationService.Navigate(page);
         }
+
+        private void Btn_Close_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

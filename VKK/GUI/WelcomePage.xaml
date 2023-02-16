@@ -11,8 +11,9 @@
 
     <Grid Background="White" Height="450" Width="800">
         <Label x:Name="Lbl_Welcome" Content="Willkommen" HorizontalAlignment="Left" Margin="28,19,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Normal" FontFamily="Century Gothic"/>
-        <Button x:Name="Btn_New" Content="Neues Rezept" HorizontalAlignment="Left" Margin="288,188,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="24" Height="79" Width="214" Click="Btn_New_Click"/>
-        <Button x:Name="Btn_Browse" Content="Stöbern" HorizontalAlignment="Left" Margin="37,188,0,0" VerticalAlignment="Top" Height="79" Width="212" FontSize="24" FontFamily="Century Gothic" Click="Btn_Browse_Click"/>
-        <Button x:Name="Btn_Category" Content="Neue Kategorie" HorizontalAlignment="Left" Margin="550,188,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="24" Height="79" Width="214" Click="Btn_Category_Click"/>
+        <Button x:Name="Btn_New" Content="Neues Rezept" HorizontalAlignment="Left" Margin="294,194,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="24" Height="79" Width="214" Click="Btn_New_Click"/>
+        <Button x:Name="Btn_Browse" Content="Stöbern" HorizontalAlignment="Left" Margin="294,76,0,0" VerticalAlignment="Top" Height="79" Width="212" FontSize="24" FontFamily="Century Gothic" Click="Btn_Browse_Click"/>
+        <Button x:Name="Btn_Category" Content="Neue Kategorie" HorizontalAlignment="Left" Margin="294,310,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="24" Height="79" Width="214" Click="Btn_Category_Click"/>
+        <Button x:Name="Btn_Close" Content="Beenden" HorizontalAlignment="Left" Margin="651,344,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="20" Height="45" Width="113" Click="Btn_Close_Click"/>
     </Grid>
 </Page>
