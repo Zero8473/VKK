@@ -133,9 +133,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Database\2023-11-01 kochrezepte.sql" />
+    <Folder Include="Database\" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\default.jpg" />
     <Resource Include="GUI\default.jpg" />
     <Content Include="Libraries\MySql.Data.dll" />
