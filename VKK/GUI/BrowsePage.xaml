@@ -12,8 +12,8 @@
     <Grid Background="White" Height="450" Width="800">
         <Label x:Name="Lbl_Browse" Content="Stöbern" HorizontalAlignment="Left" Margin="28,19,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Normal" FontFamily="Century Gothic"/>
         <TextBox x:Name="Txt_Search3" HorizontalAlignment="Left" Margin="472,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" Height="29" FontSize="14"/>
-        <Button x:Name="Btn_Go3" Content="Suche" HorizontalAlignment="Left" Margin="721,32,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="14" Height="29" Width="58" Click="Btn_Go3_Click"/>
-        <ComboBox x:Name="CB_Categories2" HorizontalAlignment="Left" Margin="472,66,0,0" VerticalAlignment="Top" Width="227" Height="29" FontSize="14" FontFamily="Century Gothic"/>
+        <Button x:Name="Btn_Go3" Content="Suche" HorizontalAlignment="Left" Margin="721,32,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="14" Height="29" Width="58" Click="Btn_Go3_Click" Background="#FFCBE0F6" BorderBrush="Black"/>
+        <ComboBox x:Name="CB_Categories2" HorizontalAlignment="Left" Margin="472,66,0,0" VerticalAlignment="Top" Width="227" Height="29" FontSize="14" FontFamily="Century Gothic" SelectionChanged="CB_Categories2_SelectionChanged"/>
         <ListBox x:Name="LB_RecipeList" Margin="28,128,31,52" FontSize="18" MouseDoubleClick="LB_RecipeList_MouseDoubleClick"/>
     </Grid>
 </Page>

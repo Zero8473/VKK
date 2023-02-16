@@ -38,11 +38,15 @@ namespace VKK.GUI
             this.NavigationService.Navigate(page);
         }
 
-        private void Btn_Go_Click(object sender, RoutedEventArgs e)
+        private void Btn_Category_Click(object sender, RoutedEventArgs e)
         {
-            SearchResultsPage page = new SearchResultsPage();
-            page.Txt_Search2.Text = Txt_Search.Text;
+            NewCategoryPage page = new NewCategoryPage();
             this.NavigationService.Navigate(page);
+        }
+
+        private void Btn_Close_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

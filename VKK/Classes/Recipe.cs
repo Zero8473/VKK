@@ -33,7 +33,7 @@ namespace VKK
 
         public List<Step> Steps = new List<Step>();
 
-        public int Servings;
+        public decimal Servings;
 
         public int TimeInMinutes;
 

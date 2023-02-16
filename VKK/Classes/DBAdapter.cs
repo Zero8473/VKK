@@ -12,9 +12,9 @@ namespace VKK
         public const string DB_NAME = "kochrezepte";
         private MySqlConnector mySqlConnector = new MySqlConnector(DB_NAME);
 
-        public bool InsertCategorie(Category cat)
+        public bool InsertCategory(Category cat)
         {
-            string mySqlInsert = String.Format("INSERT INTO category (title) VALUES ('{1}', '{2}'); ", cat.Title);
+            string mySqlInsert = String.Format("INSERT INTO category (title) VALUES ('{0}'); ", cat.Title);
             int catid = unchecked((int)mySqlConnector.executeInsert(mySqlInsert));
 
             if(catid == -1)
@@ -29,7 +29,8 @@ namespace VKK
 
         public bool InsertRecipe(Recipe rec)
         {
-            string mySqlInsert = String.Format("INSERT INTO recipe (title, pic, servings, time, category) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}'); ", rec.Title, rec.Pic, rec.Servings, rec.TimeInMinutes, rec.Category.ID);
+            string path = rec.Pic.Replace(@"\", @"\\");
+            string mySqlInsert = String.Format("INSERT INTO recipe (title, pic, servings, time, category) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}'); ", rec.Title, path, rec.Servings, rec.TimeInMinutes, rec.Category.ID);
             int recid = unchecked((int)mySqlConnector.executeInsert(mySqlInsert));
 
             if(recid == -1)
@@ -66,7 +67,10 @@ namespace VKK
 
         private int InsertIngredient(int recid, Ingredient ing)
         {
-            string mySqlInsertIng = String.Format("INSERT INTO ingredient (recid, title, amount, unit) VALUES ('{0}','{1}','{2}','{3}'); ", recid, ing.Title, ing.Amount, ing.UnitOfMeasure.ToString());
+            string amountAsString = ing.Amount.ToString();
+            amountAsString = amountAsString.Replace(",", ".");
+
+            string mySqlInsertIng = String.Format("INSERT INTO ingredient (recid, title, amount, unit) VALUES ('{0}','{1}','{2}','{3}'); ", recid, ing.Title, amountAsString, ing.UnitOfMeasure.ToString());
             return mySqlConnector.executeNonQuery(mySqlInsertIng);
         }
 
@@ -87,6 +91,7 @@ namespace VKK
                 cats.Add(cat);
             }
 
+            mySqlConnector.CloseConnection();
             return cats;
         }
 
@@ -116,6 +121,7 @@ namespace VKK
                 recipes.Add(rec);
             }
 
+            mySqlConnector.CloseConnection();
             return recipes;
         }
 
@@ -134,6 +140,8 @@ namespace VKK
 
                 rec.Steps.Add(step);
             }
+
+            mySqlConnector.CloseConnection();
         }
 
         private void GetIngredientsForRecipe(Recipe rec, MySqlDataReader RecReader)
@@ -152,6 +160,8 @@ namespace VKK
 
                 rec.Ingredients.Add(ing);
             }
+
+            mySqlConnector.CloseConnection();
         }
 
         private void GetRecipeCategory(Recipe rec, MySqlDataReader RecReader)
@@ -167,6 +177,12 @@ namespace VKK
             }
         }
 
+        public int DeleteCategory(Category cat)
+        {
+            string mySqlDelete = String.Format("DELETE FROM category WHERE id='{0}'; ", cat.ID);
+            return mySqlConnector.executeNonQuery(mySqlDelete);
+        }
+
         public int DeleteRecipe(Recipe rec)
         {
             DeleteIngredientsForRecipe(rec);
@@ -179,13 +195,13 @@ namespace VKK
 
         private int DeleteIngredientsForRecipe(Recipe rec)
         {
-            string mySqlDelete = String.Format("DELETE FROM tblingredients WHERE recid='{0}'; ", rec.ID);
+            string mySqlDelete = String.Format("DELETE FROM ingredient WHERE recid='{0}'; ", rec.ID);
             return mySqlConnector.executeNonQuery(mySqlDelete);
         }
 
         private int DeleteStepsForRecipe(Recipe rec)
         {
-            string mySqlDelete = String.Format("DELETE FROM tblsteps WHERE recid='{0}'; ", rec.ID);
+            string mySqlDelete = String.Format("DELETE FROM step WHERE recid='{0}'; ", rec.ID);
             return mySqlConnector.executeNonQuery(mySqlDelete);
         }
 
