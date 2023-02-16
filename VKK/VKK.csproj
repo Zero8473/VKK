@@ -139,6 +139,11 @@
   <ItemGroup>
     <Resource Include="Images\default.jpg" />
     <Resource Include="GUI\default.jpg" />
+    <Resource Include="Images\Apfelkuchen.jpg" />
+    <Resource Include="Images\Lachs-Brokkoli-Nudeln.jpg" />
+    <Resource Include="Images\Salatdressing.jpg" />
+    <Resource Include="Images\Schinken-Zucchini1.jpg" />
+    <Resource Include="Images\Spaghetti.jpg" />
     <Content Include="Libraries\MySql.Data.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
