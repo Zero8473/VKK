@@ -73,11 +73,19 @@ namespace VKK.GUI
             rec.Ingredients = ings;
             rec.Steps = steps;
 
-            foreach(Category cat in cats)
+            if (CB_Categories.Text == "")
             {
-                if(CB_Categories.Text == cat.Title)
+                MessageBox.Show("Bitte wählen Sie eine Kategorie für das Rezept.");
+                return;
+            }
+            else
+            {
+                foreach (Category cat in cats)
                 {
-                    rec.Category = cat;
+                    if (CB_Categories.SelectedItem.ToString() == cat.Title)
+                    {
+                        rec.Category = cat;
+                    }
                 }
             }
 

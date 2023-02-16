@@ -47,6 +47,7 @@ namespace VKK
                 stringBuilder.UserID = DBUser;
                 stringBuilder.Password = DBPassword;
                 stringBuilder.Database = DBName;
+                stringBuilder.MaximumPoolSize = 120;
 
                 return stringBuilder.ConnectionString;
             }

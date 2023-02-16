@@ -67,7 +67,10 @@ namespace VKK
 
         private int InsertIngredient(int recid, Ingredient ing)
         {
-            string mySqlInsertIng = String.Format("INSERT INTO ingredient (recid, title, amount, unit) VALUES ('{0}','{1}','{2}','{3}'); ", recid, ing.Title, ing.Amount, ing.UnitOfMeasure.ToString());
+            string amountAsString = ing.Amount.ToString();
+            amountAsString = amountAsString.Replace(",", ".");
+
+            string mySqlInsertIng = String.Format("INSERT INTO ingredient (recid, title, amount, unit) VALUES ('{0}','{1}','{2}','{3}'); ", recid, ing.Title, amountAsString, ing.UnitOfMeasure.ToString());
             return mySqlConnector.executeNonQuery(mySqlInsertIng);
         }
 
@@ -88,6 +91,7 @@ namespace VKK
                 cats.Add(cat);
             }
 
+            mySqlConnector.CloseConnection();
             return cats;
         }
 
@@ -117,6 +121,7 @@ namespace VKK
                 recipes.Add(rec);
             }
 
+            mySqlConnector.CloseConnection();
             return recipes;
         }
 
@@ -135,6 +140,8 @@ namespace VKK
 
                 rec.Steps.Add(step);
             }
+
+            mySqlConnector.CloseConnection();
         }
 
         private void GetIngredientsForRecipe(Recipe rec, MySqlDataReader RecReader)
@@ -153,6 +160,8 @@ namespace VKK
 
                 rec.Ingredients.Add(ing);
             }
+
+            mySqlConnector.CloseConnection();
         }
 
         private void GetRecipeCategory(Recipe rec, MySqlDataReader RecReader)
@@ -166,6 +175,12 @@ namespace VKK
                     rec.Category = cat;
                 }
             }
+        }
+
+        public int DeleteCategory(Category cat)
+        {
+            string mySqlDelete = String.Format("DELETE FROM category WHERE id='{0}'; ", cat.ID);
+            return mySqlConnector.executeNonQuery(mySqlDelete);
         }
 
         public int DeleteRecipe(Recipe rec)
