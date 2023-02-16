@@ -24,6 +24,9 @@ namespace VKK.GUI
         public NewCategoryPage()
         {
             InitializeComponent();
+
+            List<string> categories = controller.GetCategoriesAsList();
+            CB_Categories.ItemsSource = categories;
         }
 
         private void Btn_Add_Click(object sender, RoutedEventArgs e)
@@ -40,6 +43,22 @@ namespace VKK.GUI
             WelcomePage page = new WelcomePage();
             this.NavigationService.RemoveBackEntry();
             this.NavigationService.Navigate(page);
+        }
+
+        private void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            List<Category> cats = controller.GetCategories();
+            Category curr = new Category();
+            foreach (Category cat in cats)
+            {
+                if (CB_Categories.SelectedItem.ToString() == cat.Title)
+                {
+                    curr = cat;
+                }
+            }
+
+            controller.DeleteCategory(curr);
+            CB_Categories.Text = "";
         }
     }
 }

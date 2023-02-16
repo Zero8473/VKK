@@ -85,6 +85,11 @@ namespace VKK
             return db.DeleteRecipe(rec);
         }
 
+        public int DeleteCategory(Category cat)
+        {
+            return db.DeleteCategory(cat);
+        }
+
         public bool InsertRecipe(Recipe rec)
         {
             return db.InsertRecipe(rec);
