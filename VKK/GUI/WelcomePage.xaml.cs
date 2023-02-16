@@ -37,5 +37,11 @@ namespace VKK.GUI
             NewRecipePage page = new NewRecipePage();
             this.NavigationService.Navigate(page);
         }
+
+        private void Btn_Category_Click(object sender, RoutedEventArgs e)
+        {
+            NewCategoryPage page = new NewCategoryPage();
+            this.NavigationService.Navigate(page);
+        }
     }
 }

@@ -90,6 +90,11 @@ namespace VKK
             return db.InsertRecipe(rec);
         }
 
+        public bool InsertCategory(Category cat)
+        {
+            return db.InsertCategory(cat);
+        }
+
         public List<string> GetUnits()
         {
             return Unit.GetNames(typeof(Unit)).ToList();

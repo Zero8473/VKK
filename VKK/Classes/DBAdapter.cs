@@ -12,9 +12,9 @@ namespace VKK
         public const string DB_NAME = "kochrezepte";
         private MySqlConnector mySqlConnector = new MySqlConnector(DB_NAME);
 
-        public bool InsertCategorie(Category cat)
+        public bool InsertCategory(Category cat)
         {
-            string mySqlInsert = String.Format("INSERT INTO category (title) VALUES ('{1}', '{2}'); ", cat.Title);
+            string mySqlInsert = String.Format("INSERT INTO category (title) VALUES ('{0}'); ", cat.Title);
             int catid = unchecked((int)mySqlConnector.executeInsert(mySqlInsert));
 
             if(catid == -1)
