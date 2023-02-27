@@ -15,13 +15,18 @@
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="Lbl_RecipeTitle" Content="[Rezeptname]" HorizontalAlignment="Left" Margin="250,22,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Normal" FontFamily="Century Gothic" Width="462"/>
-        <TextBox x:Name="Txt_Ingredients" IsReadOnly="true" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="32,220,0,0" Text="[Zutaten]" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="142" FontFamily="Century Gothic" FontSize="14"/>
-        <TextBox x:Name="Txt_Steps" IsReadOnly="true" HorizontalAlignment="Left" Margin="250,112,0,0" Text="[Anleitung]" TextWrapping="Wrap" VerticalAlignment="Top" Width="513" Height="250" FontFamily="Century Gothic" FontSize="14"/>
+        <ScrollViewer Margin="32,220,0,0" Width="180" Height="142" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBox x:Name="Txt_Ingredients" IsReadOnly="true" VerticalContentAlignment="Top" Text="[Zutaten]" TextWrapping="Wrap" FontFamily="Century Gothic"/>
+        </ScrollViewer>
+        <ScrollViewer HorizontalAlignment="Left" Margin="250,112,0,0" VerticalAlignment="Top" Width="513" Height="250">
+            <TextBox x:Name="Txt_Steps" IsReadOnly="true" Text="[Anleitung]" TextWrapping="Wrap" FontFamily="Century Gothic" FontSize="14"/>
+        </ScrollViewer>
         <Image x:Name="Img_RecipePic" Source="default.jpg" HorizontalAlignment="Left" Height="180" Margin="32,22,0,0" VerticalAlignment="Top" Width="180"/>
-        <Button x:Name="Btn_RecipeDelete" Content="Löschen" Margin="662,367,24.2,35" FontFamily="Century Gothic" FontSize="14" Click="Btn_RecipeDelete_Click" Background="#FFCBE0F6" BorderBrush="Black"/>
-        <TextBox x:Name="Txt_CurrRecipe" HorizontalAlignment="Left" Height="23" Margin="32,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Button x:Name="Btn_RecipeDelete" Content="Löschen" Margin="662,375,24.2,27" FontFamily="Century Gothic" FontSize="14" Click="Btn_RecipeDelete_Click" Background="#FFCBE0F6" BorderBrush="Black"/>
         <Label x:Name="Lbl_Servings" Content="Portionen" HorizontalAlignment="Left" Margin="688,80,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="14"/>
         <TextBox x:Name="Txt_Servings" VerticalContentAlignment="Center" TextAlignment="Center" HorizontalAlignment="Left" Height="27" Margin="648,80,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="40" FontFamily="Century Gothic" FontSize="14" TextChanged="Txt_Servings_TextChanged"/>
         <Label x:Name="Lbl_Time" Content="[Arbeitszeit]" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top" Width="252" FontFamily="Century Gothic" FontStyle="Italic"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="142" Margin="32,220,0,0" VerticalAlignment="Top" Width="180"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="250" Margin="250,112,0,0" VerticalAlignment="Top" Width="513"/>
     </Grid>
 </Page>
