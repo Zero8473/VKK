@@ -29,23 +29,25 @@ namespace VKK.GUI
         {
             InitializeComponent();
 
-            string recString = Txt_CurrRecipe.Text;
             Lbl_RecipeTitle.Content = curr.Title;
 
             try
             {
                 string imgString;
 
-                if (curr.Pic.Substring(0, 1) == @"\")
+                if (curr.Pic != "")
                 {
-                    imgString = "..\\.." + curr.Pic;
-                }
-                else
-                {
-                    imgString = curr.Pic;
-                }
+                    if (curr.Pic.Substring(0, 1) == @"\")
+                    {
+                        imgString = "..\\.." + curr.Pic;
+                    }
+                    else
+                    {
+                        imgString = curr.Pic;
+                    }
 
-                Img_RecipePic.Source = new ImageSourceConverter().ConvertFromString(imgString) as ImageSource;
+                    Img_RecipePic.Source = new ImageSourceConverter().ConvertFromString(imgString) as ImageSource;
+                }
             }
 
             catch
@@ -55,14 +57,21 @@ namespace VKK.GUI
 
             foreach(Ingredient ing in curr.Ingredients)
             {
-                ings += String.Format("{0} {1} {2}", ing.Amount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                if (ing.Amount == 0 && ing.UnitOfMeasure == Unit.leer)
+                {
+                    ings += ing.Title + Environment.NewLine;
+                }
+                else
+                {
+                    ings += String.Format("{0} {1} {2}", ing.Amount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                }
             }
 
             Lbl_Time.Content = String.Format("Arbeitszeit: {0} min.", curr.TimeInMinutes.ToString());
 
             foreach(Step step in curr.Steps)
             {
-                steps += step.Description + Environment.NewLine;
+                steps += step.Description + Environment.NewLine + Environment.NewLine;
             }
 
             Txt_Ingredients.Text = ings;
@@ -72,38 +81,60 @@ namespace VKK.GUI
 
         private void Btn_RecipeDelete_Click(object sender, RoutedEventArgs e)
         {
-            controller.DeleteRecipe(curr);
+            MessageBoxResult result = MessageBox.Show("Sind Sie sicher, dass Sie dieses Rezept löschen möchten?", "Achtung!", MessageBoxButton.YesNo);
 
-            WelcomePage page = new WelcomePage();
-            this.NavigationService.RemoveBackEntry();
-            this.NavigationService.Navigate(page);
+            switch(result)
+            {
+                case MessageBoxResult.Yes:
+                    controller.DeleteRecipe(curr);
+                    WelcomePage page = new WelcomePage();
+                    this.NavigationService.RemoveBackEntry();
+                    this.NavigationService.Navigate(page);
+                    break;
+                case MessageBoxResult.No:
+                    return;
+            }
         }
 
         private void Txt_Servings_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ings = "";
+           ings = "";
             int ServingInt;
 
             try
             {
-                ServingInt = Int32.Parse(Txt_Servings.Text);
-
-                if (ServingInt == curr.Servings || ServingInt == 0)
+                if (Txt_Servings.Text == "")
                 {
-                    return;
+                    ServingInt = 0;
+                }
+                else
+                {
+                    ServingInt = Int32.Parse(Txt_Servings.Text);
                 }
 
                 foreach (Ingredient ing in curr.Ingredients)
                 {
-                    decimal newAmount = ing.Amount / curr.Servings * ServingInt;
-                    ings += String.Format("{0} {1} {2}", newAmount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                    if (ServingInt == curr.Servings)
+                    {
+                        ings += String.Format("{0} {1} {2}", ing.Amount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                    }
+                    else if (ing.Amount == 0 && ing.UnitOfMeasure == Unit.leer)
+                    {
+                        ings += ing.Title + Environment.NewLine;
+                    }
+                    else
+                    {
+                        decimal newAmount = ing.Amount / curr.Servings * ServingInt;
+                        ings += String.Format("{0} {1} {2}", newAmount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                    }
                 }
 
                 Txt_Ingredients.Text = ings;
             }
             catch
             {
-                return;
+                MessageBox.Show("Ihre Eingabe ist ungültig. Bitte beachten Sie, dass in dem Feld 'Portionen' eine Ganzzahl als Eingabe erwartet wird.");
+                Txt_Servings.Text = "";
             }
         }
     }

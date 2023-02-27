@@ -58,7 +58,7 @@ namespace VKK
 
             foreach (Recipe rec in recs)
             {
-                if (category != "")
+                if (category != "" && search != "")
                 {
                     if (rec.Title.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0 && rec.Category.Title == category)
                     {
@@ -66,9 +66,17 @@ namespace VKK
                         recEntries.Add(curr);
                     }
                 }
-                else
+                else if (search != "")
                 {
                     if (rec.Title.Contains(search))
+                    {
+                        string curr = rec.Title;
+                        recEntries.Add(curr);
+                    }
+                }
+                else if (category != "")
+                {
+                    if(rec.Category.Title == category)
                     {
                         string curr = rec.Title;
                         recEntries.Add(curr);
@@ -102,7 +110,12 @@ namespace VKK
 
         public List<string> GetUnits()
         {
-            return Unit.GetNames(typeof(Unit)).ToList();
+            List<string> units = new List<string>();
+            units = Unit.GetNames(typeof(Unit)).ToList();
+            units.Remove("leer");
+            units.Add("");
+
+            return units;
         }
     }
 }
