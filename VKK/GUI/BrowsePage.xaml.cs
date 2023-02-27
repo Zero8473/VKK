@@ -34,12 +34,22 @@ namespace VKK.GUI
             CB_Categories2.ItemsSource = categories;
         }
 
+        /// <summary>
+        /// Führt Suche/Filterung für Rezeptliste aus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Go3_Click(object sender, RoutedEventArgs e)
         {
             List<string> recipes = controller.GetRecipesPerSearch(Txt_Search3.Text, CB_Categories2.Text);
             LB_RecipeList.ItemsSource = recipes;
         }
 
+        /// <summary>
+        /// Öffnet ausgewählten Datensatz
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LB_RecipeList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (LB_RecipeList.SelectedItem.ToString() != "")
@@ -62,6 +72,11 @@ namespace VKK.GUI
             }
         }
 
+        /// <summary>
+        /// Führt Filterung aus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CB_Categories2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<string> recipes = controller.GetRecipesPerSearch(Txt_Search3.Text, CB_Categories2.SelectedItem.ToString());

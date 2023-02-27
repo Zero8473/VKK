@@ -37,6 +37,11 @@ namespace VKK.GUI
             CB_Categories.ItemsSource = controller.GetCategoriesAsList();
         }
 
+        /// <summary>
+        /// Fügt Zutat in die Zutatenliste ein
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_AddIng_Click(object sender, RoutedEventArgs e)
         {
             if (Txt_Ingredient.Text != "")
@@ -82,6 +87,11 @@ namespace VKK.GUI
             }
         }
 
+        /// <summary>
+        /// Fügt Schritt in die Schrittliste ein
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_AddStep_Click(object sender, RoutedEventArgs e)
         {
             if (Txt_Step.Text != "")
@@ -102,6 +112,11 @@ namespace VKK.GUI
             }
         }
 
+        /// <summary>
+        /// Speichert gesamtes Rezept in die Datenbank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
             Recipe rec = new Recipe();

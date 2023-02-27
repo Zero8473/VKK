@@ -11,6 +11,10 @@ namespace VKK
         DBAdapter db = new DBAdapter();
         public static Recipe curr { get; set; }
 
+        /// <summary>
+        ///  Gibt die Kategorien aus der Datenbank als String-Liste zurück
+        /// </summary>
+        /// <returns>categories as list of strings</returns>
         public List<string> GetCategoriesAsList()
         {
             List<Category> cats = this.GetCategories();
@@ -27,16 +31,28 @@ namespace VKK
             return results;
         }
 
+        /// <summary>
+        /// Gibt die Kategorien aus der Datenbank als Category-Liste zurück
+        /// </summary>
+        /// <returns>categories as list of categories</returns>
         public List<Category> GetCategories()
         {
             return db.GetCategories();
         }
 
+        /// <summary>
+        /// Gibt die Rezepte aus der Datenbank als Recipe-Liste zurück
+        /// </summary>
+        /// <returns>recipes as list of recipes</returns>
         public List<Recipe> GetAllRecipes()
         {
             return db.GetRecipes();
         }
 
+        /// <summary>
+        /// Gibt die Rezepte aus der Datenbank als String-Liste zurück
+        /// </summary>
+        /// <returns>recipes as list of strings</returns>
         public List<string> GetRecipesAsStrings()
         {
             List<Recipe> recs = db.GetRecipes();
@@ -51,6 +67,12 @@ namespace VKK
             return recEntries;
         }
 
+        /// <summary>
+        /// Gibt eine String-Liste der Rezepte zurück, die den Filterkriterien entsprechen
+        /// </summary>
+        /// <param name="search"></param>
+        /// <param name="category"></param>
+        /// <returns>filtered recipes as list of strings</returns>
         public List<string> GetRecipesPerSearch(string search, string category)
         {
             List<Recipe> recs = db.GetRecipes();
@@ -88,26 +110,50 @@ namespace VKK
             return recEntries;
         }
 
+        /// <summary>
+        /// Löscht ausgewähltes Rezept aus der Datenbank
+        /// </summary>
+        /// <param name="rec"></param>
+        /// <returns>ExecuteNonQuery result</returns>
         public int DeleteRecipe(Recipe rec)
         {
             return db.DeleteRecipe(rec);
         }
 
+        /// <summary>
+        /// Löscht ausgewählte Kategorie aus der Datenbank
+        /// </summary>
+        /// <param name="cat"></param>
+        /// <returns>ExecuteNonQuery result</returns>
         public int DeleteCategory(Category cat)
         {
             return db.DeleteCategory(cat);
         }
 
+        /// <summary>
+        /// Fügt ein in der GUI erstelltes Rezept in die Datenbank ein
+        /// </summary>
+        /// <param name="rec"></param>
+        /// <returns>if successful</returns>
         public bool InsertRecipe(Recipe rec)
         {
             return db.InsertRecipe(rec);
         }
 
+        /// <summary>
+        /// Fügt eine in der GUI erstellte Kategorie in die Datenbank ein
+        /// </summary>
+        /// <param name="rec"></param>
+        /// <returns>if successful</returns>
         public bool InsertCategory(Category cat)
         {
             return db.InsertCategory(cat);
         }
 
+        /// <summary>
+        /// Gibt Einheiten als String-Liste zurück
+        /// </summary>
+        /// <returns>units as list of strings</returns>
         public List<string> GetUnits()
         {
             List<string> units = new List<string>();

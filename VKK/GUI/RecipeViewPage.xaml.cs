@@ -79,6 +79,11 @@ namespace VKK.GUI
             Txt_Servings.Text = curr.Servings.ToString();
         }
 
+        /// <summary>
+        /// Löscht Rezept nach Abfrage aus der Datenbank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_RecipeDelete_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Sind Sie sicher, dass Sie dieses Rezept löschen möchten?", "Achtung!", MessageBoxButton.YesNo);
@@ -96,6 +101,11 @@ namespace VKK.GUI
             }
         }
 
+        /// <summary>
+        /// Berechnet die Zutatenmengen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Txt_Servings_TextChanged(object sender, TextChangedEventArgs e)
         {
            ings = "";
@@ -116,7 +126,14 @@ namespace VKK.GUI
                 {
                     if (ServingInt == curr.Servings)
                     {
-                        ings += String.Format("{0} {1} {2}", ing.Amount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                        if (ing.Amount == 0 && ing.UnitOfMeasure == Unit.leer)
+                        {
+                            ings += ing.Title + Environment.NewLine;
+                        }
+                        else
+                        {
+                            ings += String.Format("{0} {1} {2}", ing.Amount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                        }
                     }
                     else if (ing.Amount == 0 && ing.UnitOfMeasure == Unit.leer)
                     {

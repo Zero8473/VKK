@@ -58,6 +58,10 @@ namespace VKK
             this._dbName = dbname;
         }
 
+        /// <summary>
+        /// Öffnet die Verbindung zur Datenbank
+        /// </summary>
+        /// <returns></returns>
         private MySqlCommand OpenConnection()
         {
             dbVerbindung = new MySqlConnection(this.ConnectionString);
@@ -68,11 +72,18 @@ namespace VKK
             return mySqlCommand;
         }
 
+        /// <summary>
+        /// Schließt die Verbindung zur Datenbank
+        /// </summary>
         public void CloseConnection()
         {
             dbVerbindung.Close();
         }
 
+        /// <summary>
+        /// Testet die Verbindung
+        /// </summary>
+        /// <returns>success message or error message</returns>
         public string TestConnection()
         {
             string msg = "DB-Verbindung erfolgreich!";
@@ -93,9 +104,8 @@ namespace VKK
 
             return msg;
         }
-
         /// <summary>
-        /// Gibt letzte eingefügte ID zurück
+        /// Führt SQL-Statement aus, gibt letzte eingefügte ID zurück
         /// </summary>
         /// <param name="dml"></param>
         /// <returns>Last Inserted ID</returns>
@@ -110,6 +120,11 @@ namespace VKK
             return retValue;
         }
 
+        /// <summary>
+        /// Führt SQL-Statement aus
+        /// </summary>
+        /// <param name="dml"></param>
+        /// <returns>ExecuteNonQuery result</returns>
         public int executeNonQuery(string dml)
         {
             int retValue = -1;
@@ -120,6 +135,11 @@ namespace VKK
             return retValue;
         }
 
+        /// <summary>
+        /// Führt SQL-Abfrage aus
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns>ExecuteReader result</returns>
         public MySqlDataReader ExecuteQuery(string sql)
         {
             MySqlDataReader dataReader = null;

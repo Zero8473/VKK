@@ -29,6 +29,11 @@ namespace VKK.GUI
             CB_Categories.ItemsSource = categories;
         }
 
+        /// <summary>
+        /// Fügt Kategorie in die Datenbank ein
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Add_Click(object sender, RoutedEventArgs e)
         {
             Category cat = new Category();
@@ -38,6 +43,8 @@ namespace VKK.GUI
                 Txt_CatName.Text = "";
 
                 controller.InsertCategory(cat);
+                List<string> categories = controller.GetCategoriesAsList();
+                CB_Categories.ItemsSource = categories;
             }
             else
             {
@@ -45,6 +52,11 @@ namespace VKK.GUI
             }
         }
 
+        /// <summary>
+        /// Schließt die Seite
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Done_Click(object sender, RoutedEventArgs e)
         {
             WelcomePage page = new WelcomePage();
@@ -52,20 +64,52 @@ namespace VKK.GUI
             this.NavigationService.Navigate(page);
         }
 
+        /// <summary>
+        /// Löscht Kategorie nach Abfrage aus der Datenbank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Delete_Click(object sender, RoutedEventArgs e)
         {
-            List<Category> cats = controller.GetCategories();
-            Category curr = new Category();
-            foreach (Category cat in cats)
-            {
-                if (CB_Categories.SelectedItem.ToString() == cat.Title)
-                {
-                    curr = cat;
-                }
-            }
+            MessageBoxResult result = MessageBox.Show("Sind Sie sicher, dass Sie diese Kategorie löschen möchten?", "Achtung!", MessageBoxButton.YesNo);
 
-            controller.DeleteCategory(curr);
-            CB_Categories.Text = "";
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    List<Recipe> allRecs = controller.GetAllRecipes();
+                    List<Recipe> recs = new List<Recipe>();
+
+                    foreach(Recipe rec in allRecs)
+                    {
+                        if (rec.Category.Title == CB_Categories.SelectedItem.ToString())
+                        {
+                            MessageBox.Show("Diese Kategorie kann nicht gelöscht werden, da bereits Rezepte existieren, die dieser Kategorie zugeordnet sind.");
+                            CB_Categories.Text = "";
+                            return;
+                        }
+                    }
+
+                    List<Category> cats = controller.GetCategories();
+                    Category curr = new Category();
+
+                    foreach (Category cat in cats)
+                    {
+                        if (CB_Categories.SelectedItem.ToString() == cat.Title)
+                        {
+                            curr = cat;
+                        }
+                    }
+
+                    controller.DeleteCategory(curr);
+                    CB_Categories.Text = "";
+
+                    List<string> categories = controller.GetCategoriesAsList();
+                    CB_Categories.ItemsSource = categories;
+                    break;
+
+                case MessageBoxResult.No:
+                    return;
+            }
         }
     }
 }
