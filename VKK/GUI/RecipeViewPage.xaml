@@ -14,7 +14,7 @@
             <ColumnDefinition Width="787*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="Lbl_RecipeTitle" Content="[Rezeptname]" HorizontalAlignment="Left" Margin="250,22,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Normal" FontFamily="Century Gothic" Width="462"/>
+        <Label x:Name="Lbl_RecipeTitle" Content="[Rezeptname]" HorizontalAlignment="Left" Margin="250,22,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Normal" FontFamily="Century Gothic" Width="537"/>
         <ScrollViewer Margin="32,220,0,0" Width="180" Height="142" HorizontalAlignment="Left" VerticalAlignment="Top">
             <TextBox x:Name="Txt_Ingredients" IsReadOnly="true" VerticalContentAlignment="Top" Text="[Zutaten]" TextWrapping="Wrap" FontFamily="Century Gothic"/>
         </ScrollViewer>

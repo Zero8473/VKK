@@ -116,7 +116,14 @@ namespace VKK.GUI
                 {
                     if (ServingInt == curr.Servings)
                     {
-                        ings += String.Format("{0} {1} {2}", ing.Amount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                        if (ing.Amount == 0 && ing.UnitOfMeasure == Unit.leer)
+                        {
+                            ings += ing.Title + Environment.NewLine;
+                        }
+                        else
+                        {
+                            ings += String.Format("{0} {1} {2}", ing.Amount.ToString("0.##"), ing.UnitOfMeasure.ToString(), ing.Title) + Environment.NewLine;
+                        }
                     }
                     else if (ing.Amount == 0 && ing.UnitOfMeasure == Unit.leer)
                     {
