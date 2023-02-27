@@ -79,6 +79,11 @@ namespace VKK.GUI
             Txt_Servings.Text = curr.Servings.ToString();
         }
 
+        /// <summary>
+        /// Löscht Rezept nach Abfrage aus der Datenbank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_RecipeDelete_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Sind Sie sicher, dass Sie dieses Rezept löschen möchten?", "Achtung!", MessageBoxButton.YesNo);
@@ -96,6 +101,11 @@ namespace VKK.GUI
             }
         }
 
+        /// <summary>
+        /// Berechnet die Zutatenmengen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Txt_Servings_TextChanged(object sender, TextChangedEventArgs e)
         {
            ings = "";

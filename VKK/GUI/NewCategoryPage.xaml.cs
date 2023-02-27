@@ -29,6 +29,11 @@ namespace VKK.GUI
             CB_Categories.ItemsSource = categories;
         }
 
+        /// <summary>
+        /// Fügt Kategorie in die Datenbank ein
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Add_Click(object sender, RoutedEventArgs e)
         {
             Category cat = new Category();
@@ -47,6 +52,11 @@ namespace VKK.GUI
             }
         }
 
+        /// <summary>
+        /// Schließt die Seite
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Done_Click(object sender, RoutedEventArgs e)
         {
             WelcomePage page = new WelcomePage();
@@ -54,6 +64,11 @@ namespace VKK.GUI
             this.NavigationService.Navigate(page);
         }
 
+        /// <summary>
+        /// Löscht Kategorie nach Abfrage aus der Datenbank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Delete_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Sind Sie sicher, dass Sie diese Kategorie löschen möchten?", "Achtung!", MessageBoxButton.YesNo);
