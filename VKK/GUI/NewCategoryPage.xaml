@@ -15,7 +15,7 @@
         <Label x:Name="Lbl_CatName" Content="Kategoriename:" HorizontalAlignment="Left" Margin="28,172,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="24" Height="42" Width="219"/>
         <Button x:Name="Btn_Add" Content="Hinzufügen" HorizontalAlignment="Left" Margin="589,172,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="24" Height="42" Width="172" Click="Btn_Add_Click" Background="#FFCBE0F6" BorderBrush="Black"/>
         <Button x:Name="Btn_Done" Content="Fertig" HorizontalAlignment="Left" Margin="643,345,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="24" Height="42" Width="118" Click="Btn_Done_Click" BorderBrush="Black" Background="#FFCBE0F6"/>
-        <ComboBox x:Name="CB_Categories" HorizontalAlignment="Left" Margin="267,236,0,0" VerticalAlignment="Top" Width="282" Height="42" FontSize="14"/>
+        <ComboBox x:Name="CB_Categories" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="267,236,0,0" VerticalAlignment="Top" Width="282" Height="42" FontSize="24"/>
         <Button x:Name="Btn_Delete" Content="Löschen" HorizontalAlignment="Left" Margin="589,236,0,0" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="24" Height="42" Width="172" Click="Btn_Delete_Click" Background="#FFCBE0F6" BorderBrush="Black"/>
 
     </Grid>
