@@ -32,10 +32,17 @@ namespace VKK.GUI
         private void Btn_Add_Click(object sender, RoutedEventArgs e)
         {
             Category cat = new Category();
-            cat.Title = Txt_CatName.Text;
-            Txt_CatName.Text = "";
+            if (Txt_CatName.Text != "")
+            {
+                cat.Title = Txt_CatName.Text;
+                Txt_CatName.Text = "";
 
-            controller.InsertCategory(cat);
+                controller.InsertCategory(cat);
+            }
+            else
+            {
+                MessageBox.Show("Bitte geben Sie der Kategorie einen Namen.");
+            }
         }
 
         private void Btn_Done_Click(object sender, RoutedEventArgs e)

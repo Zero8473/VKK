@@ -42,20 +42,24 @@ namespace VKK.GUI
 
         private void LB_RecipeList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            string recipeName = LB_RecipeList.SelectedItem.ToString();
-            List<Recipe> recs = controller.GetAllRecipes();
-            Recipe curr = new Recipe();
-            foreach (Recipe rec in recs)
+            if (LB_RecipeList.SelectedItem.ToString() != "")
             {
-                if (rec.Title == recipeName)
-                {
-                    curr = rec;
-                }
-            }
+                string recipeName = LB_RecipeList.SelectedItem.ToString();
+                List<Recipe> recs = controller.GetAllRecipes();
+                Recipe curr = new Recipe();
 
-            Controller.curr = curr;
-            RecipeViewPage page = new RecipeViewPage();
-            this.NavigationService.Navigate(page);
+                foreach (Recipe rec in recs)
+                {
+                    if (rec.Title == recipeName)
+                    {
+                        curr = rec;
+                    }
+                }
+
+                Controller.curr = curr;
+                RecipeViewPage page = new RecipeViewPage();
+                this.NavigationService.Navigate(page);
+            }
         }
 
         private void CB_Categories2_SelectionChanged(object sender, SelectionChangedEventArgs e)

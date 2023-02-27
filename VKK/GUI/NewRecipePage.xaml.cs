@@ -39,43 +39,76 @@ namespace VKK.GUI
 
         private void Btn_AddIng_Click(object sender, RoutedEventArgs e)
         {
-            Ingredient ing = new Ingredient();
-            ing.Title = Txt_Ingredient.Text;
-            Decimal.TryParse(Txt_Amount.Text, out ing.Amount);
-            Enum.TryParse<Unit>(CB_Units.Text, out ing.UnitOfMeasure);
+            if (Txt_Ingredient.Text != "")
+            {
+                Ingredient ing = new Ingredient();
+                ing.Title = Txt_Ingredient.Text;
 
-            Txt_Ingredient.Text = "";
-            Txt_Amount.Text = "";
+                if (Txt_Amount.Text != "" && CB_Units.Text != "")
+                {
+                    try
+                    {
+                        ing.Amount = Decimal.Parse(Txt_Amount.Text);
+                        Enum.TryParse<Unit>(CB_Units.Text, out ing.UnitOfMeasure);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ihre Eingabe ist ungültig. Bitte beachten Sie, dass in dem Feld für die Menge der Zutat eine Dezimalzahl als Eingabe erwartet wird.");
+                    }
+                }
+                else if (Txt_Amount.Text != "" && CB_Units.Text == "")
+                {
+                    MessageBox.Show("Bitte geben Sie der Zutat eine Einheit, oder lassen Sie Menge und Einheit leer.");
+                }
+                else if (Txt_Amount.Text == "" && CB_Units.Text != "")
+                {
+                    MessageBox.Show("Bitte geben Sie der Zutat eine Menge, oder lassen Sie Menge und Einheit leer.");
+                }
+                else if (Txt_Amount.Text == "" && CB_Units.Text == "")
+                {
+                    ing.Amount = 0;
+                    ing.UnitOfMeasure = Unit.leer;
+                }
 
-            ings.Add(ing);
+                Txt_Ingredient.Text = "";
+                Txt_Amount.Text = "";
+                CB_Units.Text = "";
+
+                ings.Add(ing);
+            }
+            else
+            {
+                MessageBox.Show("Bitte geben Sie der Zutat einen Namen.");
+            }
         }
 
         private void Btn_AddStep_Click(object sender, RoutedEventArgs e)
         {
-            Step step = new Step();
-            step.No = stepCount;
-            step.Description = Txt_Step.Text;
+            if (Txt_Step.Text != "")
+            {
+                Step step = new Step();
+                step.No = stepCount;
+                step.Description = Txt_Step.Text;
 
-            stepCount += 1;
-            Txt_Step.Text = "";
-            Lbl_Steps.Content = String.Format("Schritt {0}:", stepCount.ToString());
+                stepCount += 1;
+                Txt_Step.Text = "";
+                Lbl_Steps.Content = String.Format("Schritt {0}:", stepCount.ToString());
 
-            steps.Add(step);
+                steps.Add(step);
+            }
+            else
+            {
+                MessageBox.Show("Bitte geben Sie dem Schritt eine Beschreibung");
+            }
         }
 
         private void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
             Recipe rec = new Recipe();
-            rec.Title = Txt_RecipeName.Text;
-            rec.Pic = Txt_RecipePic.Text;
-            rec.Servings = Int32.Parse(Txt_RecipeServings.Text);
-            rec.TimeInMinutes = Int32.Parse(Txt_Time.Text);
-            rec.Ingredients = ings;
-            rec.Steps = steps;
 
-            if (CB_Categories.Text == "")
+            if (CB_Categories.Text == "" || Txt_RecipeName.Text == "" || Txt_RecipeServings.Text == "" || Txt_Time.Text == "")
             {
-                MessageBox.Show("Bitte wählen Sie eine Kategorie für das Rezept.");
+                MessageBox.Show("Bitte geben Sie dem Rezept einen Namen, eine Portionsanzahl, eine Zeitangabe sowie eine Kategorie.");
                 return;
             }
             else
@@ -88,9 +121,29 @@ namespace VKK.GUI
                     }
                 }
             }
+            
+            rec.Title = Txt_RecipeName.Text;
+            rec.Pic = Txt_RecipePic.Text;
+
+            try
+            {
+                rec.Servings = Int32.Parse(Txt_RecipeServings.Text);
+                rec.TimeInMinutes = Int32.Parse(Txt_Time.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Ihre Eingabe ist ungültig. Bitte beachten Sie, dass in den Feldern 'Portionen' und 'Zeit (in min.)' Ganzzahlen als Eingabe erwartet werden.");
+                Txt_RecipeServings.Text = "";
+                Txt_Time.Text = "";
+
+                return;
+            }
+
+            rec.Ingredients = ings;
+            rec.Steps = steps;
 
 
-            foreach(Ingredient ing in ings)
+            foreach (Ingredient ing in ings)
             {
                 ing.Rec = rec;
             }
