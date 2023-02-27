@@ -11,6 +11,8 @@ namespace VKK
         g,
         ml,
         Stück,
-        Prise
+        Prise,
+        Etwas,
+        leer
     }
 }
