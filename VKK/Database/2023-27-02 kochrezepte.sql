@@ -4,11 +4,11 @@ create database kochrezepte;
 use kochrezepte; 
 
 -- ----------------------------------
--- MariaDB dump 10.19  Distrib 10.4.18-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.22-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: kochrezepte
 -- ------------------------------------------------------
--- Server version	10.4.18-MariaDB
+-- Server version	10.4.22-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,6 +31,7 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
+  `color` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -41,7 +42,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Salat'),(2,'Fleisch'),(3,'Vegetarisch'),(4,'Vegan'),(5,'Fisch'),(6,'Dessert'),(7,'Rind');
+INSERT INTO `category` VALUES (1,'Salat',NULL),(2,'Fleisch',NULL),(3,'Vegetarisch',NULL),(4,'Vegan',NULL),(5,'Fisch',NULL),(6,'Dessert',NULL),(7,'Rind',NULL);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-16 11:17:41
+-- Dump completed on 2023-02-27 12:43:37
